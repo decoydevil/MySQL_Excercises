@@ -54,3 +54,5 @@ where major like '%bio%';
  select A1.sID
  from Apply A1, Apply A@
  where A1.sID = A2
+ 
+ -- This is the new update
