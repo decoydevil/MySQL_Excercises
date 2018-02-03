@@ -51,8 +51,53 @@ where major like '%bio%';
  INTERSECT
  select sID from Apply where major = 'EE';
  select * from Apply;
- select A1.sID
- from Apply A1, Apply A@
- where A1.sID = A2
  
+ select distinct.sID
+ from Apply A1, Apply A2
+ where A1.sID = A2.sID and A1.major = 'CS' and A2.major = 'EE';
+ 
+ select sID from Apply where major = 'CS'
+ except
+ select sID from Apply where major = 'EE';
+
+select distinct A1.sID
+from Apply A1, Apply A2
+where A1.sID = A2.sID and A1. major = 'CS' and A2.major = 'EE'; 
  -- This is the new update
+ 
+ -- SUB-QUERY IN WHERE CLAUSE
+ 
+select Student.sID, sName
+from Student
+where sID in (select sID from Apply where major = 'CS');
+
+select Student.sID, sName
+from Student
+where Student.sID = Apply.sID and major = 'CS';
+
+select GPA
+from Apply A, Student S
+where A.major = 'CS' and A.sID = S.sID;
+
+select sName
+from Student
+where sID in (select sID from Apply where major = 'CS');
+
+select sName 
+from Student, Apply
+where Student.sID = Apply.sID and major = 'CS';
+
+select distinct Student.sID, GPA
+from Student, Apply
+where Student.sID = Apply.sID and Apply.major = 'CS';
+ -- the only way for correct no of duplicates is to use the version
+ -- of the query that (cuz distinct will only 
+ -- has the subqeury in the where clause
+ select * from Apply;
+select distinct * from Student;
+ 
+ select sID, sName
+ from Student
+ where sID in (select sID from Apply where major = 'CS')
+ and sID not in (select sID from Apply where major = 'EE');
+ 
