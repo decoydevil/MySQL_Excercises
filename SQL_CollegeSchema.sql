@@ -86,7 +86,7 @@ where sID in (select sID from Apply where major = 'CS');
 select sName 
 from Student, Apply
 where Student.sID = Apply.sID and major = 'CS';
-
+	
 select distinct Student.sID, GPA
 from Student, Apply
 where Student.sID = Apply.sID and Apply.major = 'CS';
@@ -101,3 +101,48 @@ select distinct * from Student;
  where sID in (select sID from Apply where major = 'CS')
  and sID not in (select sID from Apply where major = 'EE');
  
+ 
+ use College;
+  select * from Student union
+ select * from Apply;
+ 
+ 
+ select enrollment 
+ from College C1
+ where in (select enrollment 
+from College C2 where C1.enrollment <> C2.enrollment 
+ and  C1.enrollment >= C2.enrollment);
+ 
+ 
+  -- for bro
+
+
+use College
+
+select  Student.sID
+from Student join Apply on Student.sID = Apply.sID;
+
+
+use employees;
+select employees.emp_no
+from employees join salaries on employee.emp_no = salaries.emp_no;
+
+select *
+from employees, salaries
+where employee.emp_no = salaries.emp_no;
+
+select * from employees
+where employees.emp_no = employees.emp_no;
+
+select * from employees
+ left join salaries on employees.emp_no = salaries.emp_no;
+ 
+ 
+select * from employees
+ right join salaries on employees.emp_no = salaries.emp_no;
+ 
+ 
+select * from employees
+ inner join salaries on employees.emp_no = salaries.emp_no;
+ 
+ Select * from emp	
