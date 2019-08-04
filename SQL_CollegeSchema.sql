@@ -1,7 +1,7 @@
 use College;
 
 select sID, sName
-from Student where GPA > 3.6;
+from Student where GPA > 2.6;
  
  select distinct sName, major
  from Student, Apply
